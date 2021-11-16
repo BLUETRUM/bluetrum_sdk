@@ -32,24 +32,6 @@ void delay_5ms(uint32_t n)
     rt_thread_mdelay(5*n);
 }
 
-typedef void (*isr_t)(void);
-static isr_t irq_func = RT_NULL;
-
-RT_SECTION(".com_text.irq")
-static void irq_wrapper(int vector, void *param)
-{
-    rt_interrupt_enter();
-    if (irq_func != RT_NULL)
-        irq_func();
-    rt_interrupt_leave();
-}
-
-isr_t register_isr(int vector, isr_t isr)
-{
-    irq_func = isr;
-    rt_hw_interrupt_install(vector, irq_wrapper, RT_NULL, "bthw");
-}
-
 int hci_transport_send_acl_to_host(uint8_t *buf, uint16_t size);
 int hci_transport_send_evt_to_host(uint8_t *buf, uint8_t size);
 RT_SECTION(".com_text.stack.hci_recv")
