@@ -34,14 +34,15 @@ DEPENDS = [""]
 #---------------------------------------------------------------------------------
 CWD              = GetCurrentDir()
 SOURCES          = Glob("*.c")
+SOURCES         += Glob('ports/rtthread/port_os.c')
+SOURCES         += Glob('ports/rtthread/port_update_uart.c')
 
 LOCAL_CPPPATH    = [] 
 LOCAL_CCFLAGS    = "" 
 LOCAL_ASFLAGS    = ""
 
-# CPPPATH          = [GetCurrentDir(), os.path.join(GetCurrentDir(), 'include')]
 CPPPATH          = [CWD]
-CPPPATH         += [CWD + '/blue_driver']
+CPPPATH         += [CWD + '/blue_driver/include']
 CCFLAGS          = "" 
 ASFLAGS          = ""
 
