@@ -52,3 +52,4 @@ RTC 编译报错的话需要更新内核
 串口0默认使用的是单线串口，也就是 tx rx 一条线，单线串口在终端调试需要使用 downloader，在 downloader 里面就不会有回显
 
 ![](img/help_uart_0.png)
+
