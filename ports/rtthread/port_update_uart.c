@@ -227,8 +227,10 @@ static struct update_uart_trans_init _uart_init = {
 struct update_custom_partition _partition =
 {
     .flash_size = 0x100000,
-    .download_start_address = 0x100000 - 0x5000,
-    .download_end_address = 0x100000,
+    .update_flash_start_address = 0x100000 - 0x5000,
+    .update_flash_end_address = 0x100000,
+    .update_ram_start_address = LOAD_ADDR,
+    .update_ram_end_address = 0x57a00,
 };
 
 static void update_thread_entry(void *parameter)
